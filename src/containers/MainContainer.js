@@ -21,6 +21,7 @@ export class MainContainer extends Component {
 
     componentDidMount() {
         this.props.fetchCurrentForecast(this.state.city);
+        this.props.fetchFiveDaysForecast(this.state.currentCityId);
     }
 
     searchCity = () =>{
@@ -40,7 +41,7 @@ export class MainContainer extends Component {
 
     render() {
         const { ajaxStatus, profile, currentCityId, currentForeCastData, fiveDaysForecastData } = this.props;
-        console.log("temp: " + currentCityId);
+        console.log("temp: " + fiveDaysForecastData);
 
         return (
             <div className="container">

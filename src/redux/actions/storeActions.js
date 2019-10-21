@@ -32,8 +32,6 @@ export function fetchCurrentForecast(city) {
         try {
             const response = await axios.get(cityUrl);
 
-            console.log("data: " + response.data);
-
             if (response.data){
                 dispatch({
                     type: FETCH_CURRENT_FORECAST,
@@ -65,15 +63,18 @@ export function fetchFiveDaysForecast(cityId) {
 
         try {
             const response = await axios.get(forecastUrl);
-            
-            dispatch({
-                type: FETCH_FIVE_DAYS_FORECAST,
-                fiveDaysForeCastData: response.data
-            });
+            console.log("data: " + response.data);
 
-            dispatch({
-                type: FETCH_COMPLETE
-            });
+            if (response.data){
+                dispatch({
+                    type: FETCH_FIVE_DAYS_FORECAST,
+                    fiveDaysForeCastData: response.data
+                });
+
+                dispatch({
+                    type: FETCH_COMPLETE
+                });
+            }    
 
         } catch (error) {
             dispatch({

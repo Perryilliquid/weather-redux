@@ -1,3 +1,4 @@
+import weatherDummy from '../../dummyData/weather';
 
 export const PROFILE_FETCH_DETAILS = 'aspire/loan/fetchDetails';
 export const FETCH_CURRENT_FORECAST = 'weather/fetchCurrentForecast';
@@ -8,8 +9,8 @@ const initialState = {
         image: {},
         redInvoice: {}
     },
-    currentCity: '',
-    currentForeCastData: {},
+    currentCityId: 1819729,
+    currentForeCastData: weatherDummy,
     fiveDaysForeCastData: {}
 };
 

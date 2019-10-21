@@ -8,20 +8,15 @@ import Loadable from 'react-loadable';
 import LoadingSpinner from './components/loading/LoadingSpinner';
 import { Route } from 'react-router-dom';
 
-const HomeContainer = Loadable({
-    loader: () => import('./containers/HomeContainer' /* webpackChunkName: "Home" */),
+const MainContainer = Loadable({
+    loader: () => import('./containers/MainContainer' /* webpackChunkName: "Home" */),
     loading: LoadingSpinner
 });
 
 export default class App extends Component {
     render() {
         return (
-            <ConnectedRouter history={history}>
-                <Switch>
-                    <Route exact path="/" component={HomeContainer} />
-                    {/* <Route exact path="*" component={PageNotFound}/> */}
-                </Switch>
-            </ConnectedRouter>
+            <MainContainer />
         );
     }
 }

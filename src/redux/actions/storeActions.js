@@ -32,16 +32,19 @@ export function fetchCurrentForecast(city) {
         try {
             const response = await axios.get(cityUrl);
 
-            dispatch({
-                type: FETCH_CURRENT_FORECAST,
-                currentCity: response.data.id,
-                currentForeCastData: response.data
-            });
+            console.log("data: " + response.data);
 
-            dispatch({
-                type: FETCH_COMPLETE
-            });
-
+            if (response.data){
+                dispatch({
+                    type: FETCH_CURRENT_FORECAST,
+                    currentCityId: response.data.id,
+                    currentForeCastData: response.data
+                });
+    
+                dispatch({
+                    type: FETCH_COMPLETE
+                });
+            }
         } catch (error) {
             dispatch({
                 type: SERVER_ERROR,

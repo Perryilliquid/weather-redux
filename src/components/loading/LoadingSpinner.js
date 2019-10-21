@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './loading.css';
+import '../../sass/loading.scss';
 
 export default class LoadingSpinner extends Component {
   render() {

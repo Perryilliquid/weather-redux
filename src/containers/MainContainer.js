@@ -39,8 +39,8 @@ export class MainContainer extends Component {
     }
 
     render() {
-        const { ajaxStatus, profile, currentCity, currentForeCastData, fiveDaysForecastData } = this.props;
-        console.log("temp: " + currentForeCastData);
+        const { ajaxStatus, profile, currentCityId, currentForeCastData, fiveDaysForecastData } = this.props;
+        console.log("temp: " + currentCityId);
 
         return (
             <div className="container">

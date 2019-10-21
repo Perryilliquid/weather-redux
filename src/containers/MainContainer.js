@@ -9,8 +9,6 @@ import FiveDaysForecastContainer from './ForecastContainer';
 export class MainContainer extends Component {
     static propTypes = {
         ajaxStatus: PropTypes.object.isRequired,
-        profile: PropTypes.object.isRequired,
-        fetchProfileDetails: PropTypes.func.isRequired,
         fetchCurrentForecast: PropTypes.func.isRequired,
         fetchFiveDaysForecast: PropTypes.func.isRequired
     };
@@ -22,7 +20,6 @@ export class MainContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchProfileDetails(1);
         this.props.fetchCurrentForecast(this.state.city);
     }
 

@@ -1,17 +1,13 @@
 import weatherDummy from '../../dummyData/weather';
+import forecastDummy from '../../dummyData/forecast';
 
 export const PROFILE_FETCH_DETAILS = 'aspire/loan/fetchDetails';
 export const FETCH_CURRENT_FORECAST = 'weather/fetchCurrentForecast';
 export const FETCH_FIVE_DAYS_FORECAST = 'weather/fetchFiveDaysForecast';
 
 const initialState = {
-    profile: {
-        image: {},
-        redInvoice: {}
-    },
-    currentCityId: 1819729,
     currentForeCastData: weatherDummy,
-    fiveDaysForeCastData: {}
+    fiveDaysForeCastData: forecastDummy
 };
 
 export default function reducer(state = initialState, action = {}) {

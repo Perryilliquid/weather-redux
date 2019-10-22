@@ -15,18 +15,12 @@ class ForecastContainer extends Component {
     }
 
     static propTypes = {
-        fiveDaysForecast: PropTypes.object.isRequired,
+        fiveDaysForeCastData: PropTypes.object.isRequired,
     };
 
     showThreeHours = (selectedDate) => {
 
-        // console.log(this.state.isOpenModal);
-
-        this.setState({
-            isOpenModal: !this.state.isOpenModal
-        });
-
-        const threeHoursData = this.props.fiveDaysForecast.fiveDaysForecast.list.filter(F => F.dt_txt.includes(selectedDate));
+        const threeHoursData = this.props.fiveDaysForeCastData.list.filter(F => F.dt_txt.includes(selectedDate));
         this.setState({
             threeHoursData
         });
@@ -41,14 +35,15 @@ class ForecastContainer extends Component {
 
     render() {
 
-        const fiveDaysForecastData = this.props.fiveDaysForecast.fiveDaysForecast.list.filter(F => F.dt_txt.includes('00:00:00'));
-        const {isOpenModal, threeHoursData} = this.state;
+        const fiveData = this.props.fiveDaysForeCastData.list.filter(F => F.dt_txt.includes('00:00:00'));
+        const {threeHoursData} = this.state;
 
         return (
             <React.Fragment>
+                <h2>Coming Five Days</h2>
                 <div className="forecastContainer">
                     {
-                        Object.values(fiveDaysForecastData).map((item, index) =>{
+                        Object.values(fiveData).map((item, index) =>{
                             return(
                                 <Forecast
                                     key={index}
@@ -66,6 +61,7 @@ class ForecastContainer extends Component {
                         })
                     }
                     {threeHoursData && <div className="foreCastDetailsContainer">
+                        
                         {
                             Object.values(threeHoursData).map((item, index) =>{
                                 return (

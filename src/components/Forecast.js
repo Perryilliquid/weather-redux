@@ -11,12 +11,12 @@ const Forecast = props => {
 
     return ( 
       <React.Fragment>
-            <Card className="forecast">
+            <Card className={`forecast ${weatherIcon}`}>
                 <CardBody className="">
                     <h5 className="weatherDate">{formatDate}</h5>
-                    <CardImg src={`https://openweathermap.org/img/wn/${weatherIcon}.png`} alt={weatherMain} /> 
+                    <CardImg src={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`} alt={weatherMain} /> 
                     <h2>{tempCur}°C</h2>
-                    <CardText>{tempMin}°C / <b>{tempMax}°C</b></CardText>
+                    <CardText className="tempText">{tempMin}°C / <b>{tempMax}°C</b></CardText>
                     <Button color="secondary" onClick={() => showThreeHours(curDate)}>Show Details</Button>
                 </CardBody>
             </Card>

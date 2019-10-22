@@ -1,0 +1,8 @@
+{
+    "openWeather":{
+        "API_KEY": "fdadbb716ef05103e8c9f0466b73a79c",
+        "API_URL": "https://api.openweathermap.org/data/2.5",
+        "API_ICON_URL": "https://openweathermap.org/img/wn/",
+        "PARAM": "type=like&sort=population&units=metric"
+    }
+}

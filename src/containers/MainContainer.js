@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { fetchCurrentForecast, fetchFiveDaysForecast } from '../redux/actions/storeActions';
+
 import LoadingContainer from '../components/loading/LoadingContainer';
+import LocationForm from '../components/LocationForm';
 import CurrentForecast from '../components/CurrentForecast';
-import FiveDaysForecastContainer from './ForecastContainer';
+import ForecastContainer from './ForecastContainer';
+
 
 export class MainContainer extends Component {
     static propTypes = {
@@ -21,11 +25,13 @@ export class MainContainer extends Component {
 
     componentDidMount() {
         this.props.fetchCurrentForecast(this.state.city);
+        this.props.fetchFiveDaysForecast(this.state.city);
     }
 
     searchCity = () =>{
         console.log(this.state.city);
         this.props.fetchCurrentForecast(this.state.city);
+        this.props.fetchFiveDaysForecast(this.state.city);
     }
 
     changeHandler = (e) =>{
@@ -39,17 +45,16 @@ export class MainContainer extends Component {
     }
 
     render() {
-        const { ajaxStatus, profile, currentCity, currentForeCastData, fiveDaysForecastData } = this.props;
-        console.log("temp: " + currentForeCastData);
+        const { ajaxStatus, currentForeCastData, fiveDaysForeCastData } = this.props;
 
         return (
             <div className="container">
                 <h1 className="header">Weather App </h1>
                 <LoadingContainer loading={ajaxStatus.isLoading}>
-                    <div className="locationForm">
-                        <input name="city" placeholder="Hong Kong" onChange={this.changeHandler} />
-                        <button onClick={this.searchCity}> <i className="fas fa-search"></i> </button>
-                    </div>
+                    <LocationForm
+                        changeHandler={this.changeHandler}
+                        searchCity={this.searchCity}
+                    />
                     <div className="dashboard">
                         <CurrentForecast
                             key={currentForeCastData.id}
@@ -66,9 +71,9 @@ export class MainContainer extends Component {
                             weatherIcon={currentForeCastData.weather[0].icon}
                             weatherDesc={currentForeCastData.weather[0].description}
                         />
-                        {/* {!fiveDaysForecastData.isEmpty && <FiveDaysForecastContainer 
-                            fiveDaysForecastData={fiveDaysForecastData}
-                        />} */}
+                        {fiveDaysForeCastData && <ForecastContainer 
+                            fiveDaysForeCastData={fiveDaysForeCastData}
+                        />}
                     </div>
                 </LoadingContainer>
             </div>
@@ -78,11 +83,12 @@ export class MainContainer extends Component {
 
 const mapStateToProps = state => {
 
+    console.log(state);
+
     return {
         ajaxStatus: state.ajaxStatus,
-        currentCityId: state.store.currentCityId,
         currentForeCastData: state.store.currentForeCastData,
-        fiveDaysForecastData: state.store.fiveDaysForecastData
+        fiveDaysForeCastData: state.store.fiveDaysForeCastData
     };
 };
 

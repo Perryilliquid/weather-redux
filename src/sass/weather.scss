@@ -3,7 +3,6 @@
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	
 	box-sizing: border-box; 
 }
 
@@ -19,6 +18,7 @@ body {
   h1, h2{
     line-height: 2;
     margin: 0;
+    text-shadow: $text-shadow;
   }
 
   p{
@@ -32,7 +32,6 @@ h1.header{
   text-transform: capitalize;
   font-size: 2.5rem;
   color: $main-color;
-  text-shadow: $text-shadow;
 
   text-align: center;
   animation: $animation;
@@ -47,7 +46,7 @@ h1.header{
   border-radius: 10px;
 
   *{
-    font-size: 1rem;
+    font-size: 1.2rem;
     border: none;
   }
 
@@ -57,8 +56,8 @@ h1.header{
   }
 
   button {
-    background: $grey-color;
-    border-color: $grey-color;
+    background: $second-color;
+    border-color: $second-color;
     color: $main-color;
     padding: 10px;
     transition: $transition;
@@ -87,7 +86,7 @@ h1.header{
   .currentForeCastContainer{
     margin: 50px auto;
     margin-bottom: 20px;
-    max-width: 900px;
+    max-width: 1000px;
     position: relative;
     background: $second-color;
     background-size: cover;
@@ -138,8 +137,17 @@ h1.header{
       -moz-box-shadow: $shadow;
       box-shadow: $shadow;
 
+      &:nth-child(5){
+        flex: 0 0 20%;
+        margin-right: 0;
+      }
+
       .weatherDesc{
         text-transform: capitalize;
+      }
+
+      .tempText{
+        font-size: 1rem;
       }
 
       .card-img{
@@ -150,13 +158,12 @@ h1.header{
       .btn{
         margin-top: 20px;
       }
-
-
     }
   }
 
   .foreCastDetailsContainer{
     width: 100%;
+    margin-top: 20px;
 
     .row{
       align-items: center;
@@ -174,8 +181,12 @@ h1.header{
     
       animation: $animation;
 
+      h2{
+        line-height: 1.2;
+      }
+
       img{
-        width: auto;
+        max-width: 50px;
       }
     }
   }

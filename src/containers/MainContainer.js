@@ -9,7 +9,6 @@ import LocationForm from '../components/LocationForm';
 import CurrentForecast from '../components/CurrentForecast';
 import ForecastContainer from './ForecastContainer';
 
-
 export class MainContainer extends Component {
     static propTypes = {
         ajaxStatus: PropTypes.object.isRequired,
@@ -40,15 +39,11 @@ export class MainContainer extends Component {
     }
 
     changeHandler = (e) =>{
-        //get the value from the input
         e.preventDefault();
-
-        let city = e.target.value;
-    //store the value in the state property
+        let city = e.target.value;  //get the value from the input
         this.setState({
             city
         });
-        
     }
 
     render() {
@@ -81,9 +76,9 @@ export class MainContainer extends Component {
                             weatherIcon={currentForeCastData.weather[0].icon}
                             weatherDesc={currentForeCastData.weather[0].description}
                         />
-                        {fiveDaysForeCastData && <ForecastContainer 
+                        <ForecastContainer
                             fiveDaysForeCastData={fiveDaysForeCastData}
-                        />}
+                        />
                     </div>
                 </LoadingContainer>
             </div>

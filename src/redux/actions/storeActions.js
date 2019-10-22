@@ -9,12 +9,14 @@ import {
 import {
     PROFILE_FETCH_DETAILS,
     FETCH_CURRENT_FORECAST,
-    FETCH_FIVE_DAYS_FORECAST
+    FETCH_FIVE_DAYS_FORECAST,
+    FETCH_BY_THREE_HOURS_FORECAST
 } from '../reducers/storeReducer';
 import axios from 'axios';
 import apiConfig from './config';
 
 //Get Current Forecast, default is Hong Kong
+
 export function fetchCurrentForecast(city) {
     return async dispatch => {
         const apiCity = city.replace(/\s/g, "+");
@@ -59,16 +61,17 @@ export function fetchFiveDaysForecast(city) {
 
         try {
             const response = await axios.get(forecastUrl);
-            
-            dispatch({
-                type: FETCH_FIVE_DAYS_FORECAST,
-                fiveDaysForeCastData: response.data
-            });
 
-            dispatch({
-                type: FETCH_COMPLETE
-            });
+            if (response.data){
+                dispatch({
+                    type: FETCH_FIVE_DAYS_FORECAST,
+                    fiveDaysForeCastData: response.data
+                });
 
+                dispatch({
+                    type: FETCH_COMPLETE
+                });
+            }    
         } catch (error) {
             dispatch({
                 type: SERVER_ERROR,

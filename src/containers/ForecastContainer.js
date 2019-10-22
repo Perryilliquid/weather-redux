@@ -23,22 +23,17 @@ class ForecastContainer extends Component {
         });
     }
 
-    closeThreeHours = () => {
-        this.setState({
-            isOpenModal: !this.state.isOpenModal
-        });
-    }
-
     render() {
-        const fiveData = this.props.fiveDaysForeCastData.list.filter(F => F.dt_txt.includes('00:00:00'));
-        const {threeHoursData} = this.state;
-
+        const { fiveDaysForeCastData} = this.props;
+        const { threeHoursData} =  this.state;
+        let fiveDaysData = fiveDaysForeCastData.list.filter(F => F.dt_txt.includes('00:00:00'));
+        
         return (
             <React.Fragment>
                 <h2>Coming Five Days</h2>
                 <div className="forecastContainer">
                     {
-                        Object.values(fiveData).map((item, index) =>{
+                        Object.values(fiveDaysData).map((item, index) =>{
                             return(
                                 <Forecast
                                     key={index}

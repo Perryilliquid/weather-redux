@@ -1,23 +1,18 @@
-import weatherDummy from '../../dummyData/weather';
+import currentDummy from '../../dummyData/weather';
 import forecastDummy from '../../dummyData/forecast';
 
-export const PROFILE_FETCH_DETAILS = 'aspire/loan/fetchDetails';
 export const FETCH_CURRENT_FORECAST = 'weather/fetchCurrentForecast';
 export const FETCH_FIVE_DAYS_FORECAST = 'weather/fetchFiveDaysForecast';
+export const FETCH_BY_THREE_HOURS_FORECAST = 'weather/fetchByThreeHoursForecast';
 
 const initialState = {
-    currentForeCastData: weatherDummy,
-    fiveDaysForeCastData: forecastDummy
+    currentForeCastData: currentDummy,
+    fiveDaysForeCastData: forecastDummy,
+    byThreeHoursForecastData: {}
 };
 
 export default function reducer(state = initialState, action = {}) {
     switch (action.type) {
-        case PROFILE_FETCH_DETAILS: {
-            return {
-                ...state,
-                profile: action.details
-            };
-        }
         case FETCH_CURRENT_FORECAST: {
             return {
                 ...state,
@@ -28,6 +23,12 @@ export default function reducer(state = initialState, action = {}) {
             return {
                 ...state,
                 fiveDaysForeCastData: action.fiveDaysForeCastData
+            };
+        }
+        case FETCH_BY_THREE_HOURS_FORECAST: {
+            return {
+                ...state,
+                byThreeHoursForecastData: action.byThreeHoursForecastData
             };
         }
         default:

@@ -6,8 +6,8 @@ import {
 import moment from 'moment';
 
 const CurrentForeCast = props => {
-    const {city,windSpeed,tempCur,tempMin,tempMax,weatherMain,weatherIcon,weatherDesc} = props;
-    let formatCurrentDate = moment().format('YYYY-MM-DD, ddd');
+    const {city,currentDate,timezone,windSpeed,tempCur,tempMin,tempMax,weatherMain,weatherIcon,weatherDesc} = props;
+    let formatCurrentDate = moment.unix(currentDate, timezone).format('YYYY-MM-DD, ddd');
 
     return ( 
         <Card className={`currentForeCastContainer ${weatherIcon}`}>

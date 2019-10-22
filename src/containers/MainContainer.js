@@ -35,10 +35,13 @@ export class MainContainer extends Component {
         })
     }
 
-    seachCityKeyPress = (e) => {
-        if (e.keycode === 13){
+    searchCityKeyPress = (e) => {
+        if (e.keycode === 13 || e.key === 'Enter'){
             this.props.fetchCurrentForecast(this.state.city);
             this.props.fetchFiveDaysForecast(this.state.city);
+            this.setState({
+                city: ''
+            })
         }
     }
 

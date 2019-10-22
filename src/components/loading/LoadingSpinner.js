@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../sass/loading.scss';
 
-export default class LoadingSpinner extends Component {
+class LoadingSpinner extends Component {
   render() {
     return (
       <div className="spinner">
@@ -12,3 +12,4 @@ export default class LoadingSpinner extends Component {
     );
   }
 }
+export default LoadingSpinner;

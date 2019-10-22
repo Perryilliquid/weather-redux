@@ -7,21 +7,29 @@ import {
 import moment from 'moment';
 
 const CurrentForeCast = props => {
-    const {city,windSpeed,clouds,tempCur,tempMin,tempMax,weatherMain,weatherIcon,weatherDesc} = props;
-    const formatCurrentDate = moment().format('YYYY-MM-DD, dddd');
+    const {city,currentDate,windSpeed,clouds,tempCur,tempMin,tempMax,weatherMain,weatherIcon,weatherDesc} = props;
+    // let formatCurrentDate = currentDate + 100000;
+    let formatCurrentDate = moment().format('YYYY-MM-DD, ddd');
 
     return ( 
         <Card className="currentForeCastContainer">
             <CardBody >
-                <CardImg className="weatherIcon txt-right" src={`https://openweathermap.org/img/wn/${weatherIcon}.png`} alt={weatherMain} />
-                <h1>{city} </h1>
-                <p>{formatCurrentDate}</p>
-                <h2>{tempCur}°C</h2>
-                <span>Min: {tempMin}°C / Max: {tempMax}°C</span>
-                <h4>{weatherMain}</h4>
-                <CardText className="weatherDesc">{weatherDesc}</CardText>
-                <CardText>Wind Speed: {windSpeed} </CardText>
-                <CardText>Cloud: {clouds} </CardText>
+                <Row>
+                    <Col xs="7">
+                        <h1>{formatCurrentDate}</h1>
+                        <h1>{city} </h1>
+                        <h2>{tempCur}°C</h2>
+                        <span>Min: {tempMin}°C / Max: {tempMax}°C</span>
+                    </Col>
+                    <Col xs="5">
+                        <CardImg className="weatherIcon txt-right" src={`https://openweathermap.org/img/wn/${weatherIcon}.png`} alt={weatherMain} />
+                        
+                        <h4>{weatherMain}</h4>
+                        <CardText className="weatherDesc">{weatherDesc}</CardText>
+                        <CardText>Wind Speed: {windSpeed} </CardText>
+                        <CardText>Cloud: {clouds} </CardText>
+                    </Col>
+                </Row>
             </CardBody>
         </Card>
     );

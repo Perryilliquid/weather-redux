@@ -1,15 +1,17 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: '[name]-bundle.js'
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -20,12 +22,41 @@ module.exports = {
       },
       // Rules to load scss
       {
-      // Some change here
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader']
+          test: /\.scss$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                  name: 'css/[name].css'
+              }
+            },
+            {
+              loader: 'extract-loader',
+            },
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                  sourceMap: true
+              }
+            }
+          ]
       }
     ]
   },
+  plugins: [
+    new CopyWebpackPlugin([
+        {
+            context: './public/',
+            from: '**/*',
+            to: './public'
+        }
+    ], { /* options */ }),
+
+    new ExtractTextPlugin("public/css/vendor-bundle.css"),
+  ],
   externals: {
       'react': 'React',
       'react-dom': 'ReactDOM',
@@ -34,4 +65,4 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist')
   }
-};
+}

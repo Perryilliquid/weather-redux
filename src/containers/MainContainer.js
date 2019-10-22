@@ -48,8 +48,8 @@ export class MainContainer extends Component {
                     <div className="dashboard">
                         <CurrentForecast
                             key={currentForeCastData.id}
-                            currentDate={currentForeCastData.dt}
-                            city={currentForeCastData.name}
+                            currentDate={currentForeCastData.timezone}
+                            city={currentForeCastData.name +  ", " + currentForeCastData.sys.country}
                             lat={currentForeCastData.coord.lat}
                             lot={currentForeCastData.coord.lon}
                             windSpeed={currentForeCastData.wind.speed}

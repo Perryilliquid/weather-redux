@@ -13,7 +13,8 @@ body {
   font-size: 16px;
   color: $main-color;
   line-height: 1.5;
-  background-color: $bg-color;
+  background: $bg-color;
+  // background: $bg-gradient;
 
   h1, h2{
     line-height: 2;
@@ -27,17 +28,18 @@ body {
 }
 
 h1.header{
+  margin: 30px 0;
   text-transform: capitalize;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: $main-color;
+  text-shadow: $text-shadow;
 
   text-align: center;
   animation: $animation;
 }
 
-
 .locationForm{
-  width: 90%;
+  width: 80%;
   max-width: 1000px;
   margin: 0 auto;
   display: grid;
@@ -45,7 +47,7 @@ h1.header{
   border-radius: 10px;
 
   *{
-    font-size: 1.4rem;
+    font-size: 1rem;
     border: none;
   }
 
@@ -73,34 +75,32 @@ h1.header{
 .dashboard{
   max-width: 1000px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 50px;
 
   .row{
     justify-content: space-between;
+    
     border-radius: 3px;
-
-    .col-5{
-      background: $second-color;
-      height: 100%;
-      border: 1px solid red;
-    }
-
-    .col-7{
-      border: 1px solid blue;
-    }
   }
 
   .currentForeCastContainer{
     margin: 50px auto;
     margin-bottom: 20px;
-    padding: 10px;
-    max-width: 1000px;
+    max-width: 900px;
     position: relative;
     background: $second-color;
     background-size: cover;
     background-position: center;
     color: $main-color;
+
+    .card-body{
+      padding: 20px;
+      
+      &>.row{
+        align-items: center;
+      }
+    }
 
     .weatherIcon{
       width: auto;
@@ -108,11 +108,13 @@ h1.header{
     }
 
     h1{
+      font-size: 1.5rem;
+      text-transform: uppercase;
       animation: $animation;
     }
 
     h2{
-      font-size: 4em;
+      font-size: 3rem;
       color: $main-color;
       animation: $animation;
     }

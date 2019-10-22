@@ -1,68 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
-
+### `yarn start`
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
+### `yarn build`
 Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Description
+It is a simple Weather App which is using OpenWeather API and using React + Redux + SASS + WEBPACK. 
+- Users can type the city/town in the search bar (default is Hong Kong), it will return the current weather and coming 5 days forecast. 
+- Users can select the days with "Show Details" button and it will return the current day forecast by 3 hours.
+- It support on Desktop / Tablet / Mobile.
 
-### `npm run eject`
+### OpenWeather API.
+- Getting Current Weather
+  api.openweathermap.org/data/2.5/weather?q=London
+- Getting 5 Days Forecast
+  api.openweathermap.org/data/2.5/forecast?q=London,us 
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### React + Redux Flow
+1. When Page loaded, it will load the default City (Hong Kong) and the call the API action, e.g. fetchCurrentForeCast(city).
+2. User click the Search Button, it will call the API action, e.g. fetchCurrentForeCast(city)
+4. If it returns data from API, using dispatch method to store the "CurrentForeCastData" and "FiveDaysForeCastData" in the store (global State). E.g.
+      dispatch({
+          type: FETCH_CURRENT_FORECAST,
+          currentForeCastData: response.data
+      });
+3. If it return null or empty, it will show the Server Response Message under the form
+4. MainContainer will detect the global state data is updated and pass the updated data to child components, e.g. CurrentForecastContainer.
+5. User can select one of the "Show Details", it will pass the "selectedDate" and filter the fiveDaysForecastContainer and retun the select date weather details (by 3 hours).

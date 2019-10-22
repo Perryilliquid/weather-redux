@@ -27,9 +27,12 @@ export class MainContainer extends Component {
     }
 
     searchCity = () => {
-        console.log(this.state.city);
+        // console.log(this.state.city);
         this.props.fetchCurrentForecast(this.state.city);
         this.props.fetchFiveDaysForecast(this.state.city);
+        this.setState=({
+            city: ''
+        })
     }
 
     seachCityKeyPress = (e) => {
@@ -93,7 +96,7 @@ export class MainContainer extends Component {
 
 const mapStateToProps = state => {
 
-    console.log(state);
+    // console.log(state);
 
     return {
         ajaxStatus: state.ajaxStatus,

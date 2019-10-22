@@ -21,6 +21,16 @@ class ForecastContainer extends Component {
         this.setState({
             threeHoursData
         });
+        
+        setTimeout(function() {
+            let scrollSectionTop = document.getElementById('foreCastDetailsContainer').offsetTop - 50;
+            window.scrollTo({
+                top: scrollSectionTop,
+                left: 0,
+                behavior: 'smooth'
+              });
+        }, 200);
+        
     }
 
     render() {
@@ -51,7 +61,7 @@ class ForecastContainer extends Component {
                         })
                     }
                 </div>
-                {threeHoursData && <div className="foreCastDetailsContainer">
+                {threeHoursData && <div className="foreCastDetailsContainer" id="foreCastDetailsContainer">
                     {
                         Object.values(threeHoursData).map((item, index) =>{
                             return (

@@ -22,9 +22,9 @@ It is a Weather App which is using OpenWeather API and using React + Redux + SAS
 - It support on Desktop / Tablet / Mobile.
 
 ### OpenWeather API.
-- Getting Current Weather
+- Getting Current Weather: 
   api.openweathermap.org/data/2.5/weather?q=London
-- Getting 5 Days Forecast
+- Getting 5 Days Forecast: 
   api.openweathermap.org/data/2.5/forecast?q=London,us 
 
 ### React + Redux Flow

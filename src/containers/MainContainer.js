@@ -18,34 +18,42 @@ export class MainContainer extends Component {
     };
 
     state = {
-        showModal: false,
-        city: 'Hong Kong',
-        currentCityId: 1819729, //Hong Kong Id
+        city: ''
     }
 
-    componentDidMount() {
-        this.props.fetchCurrentForecast(this.state.city);
-        this.props.fetchFiveDaysForecast(this.state.city);
+    componentDidMount() { //default load Hong Kong weather
+        this.props.fetchCurrentForecast('Hong Kong');
+        this.props.fetchFiveDaysForecast('Hong Kong');
     }
 
-    searchCity = () =>{
+    searchCity = () => {
         console.log(this.state.city);
         this.props.fetchCurrentForecast(this.state.city);
         this.props.fetchFiveDaysForecast(this.state.city);
     }
 
+    seachCityKeyPress = (e) => {
+        if (e.keycode === 13){
+            this.props.fetchCurrentForecast(this.state.city);
+            this.props.fetchFiveDaysForecast(this.state.city);
+        }
+    }
+
     changeHandler = (e) =>{
         //get the value from the input
+        e.preventDefault();
+
         let city = e.target.value;
     //store the value in the state property
         this.setState({
-        city
+            city
         });
         
     }
 
     render() {
         const { ajaxStatus, currentForeCastData, fiveDaysForeCastData } = this.props;
+        const { city } = this.state;
 
         return (
             <div className="container">
@@ -54,6 +62,8 @@ export class MainContainer extends Component {
                     <LocationForm
                         changeHandler={this.changeHandler}
                         searchCity={this.searchCity}
+                        searchCityKeyPress={this.searchCityKeyPress}
+                        city={city}
                     />
                     <div className="dashboard">
                         <CurrentForecast

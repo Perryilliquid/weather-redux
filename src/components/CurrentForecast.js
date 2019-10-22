@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import apiConfig from '../redux/actions/config';
 import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Row, Col
@@ -14,14 +15,14 @@ const CurrentForeCast = props => {
         <Card className={`currentForeCastContainer ${weatherIcon}`}>
             <CardBody >
                 <Row>
-                    <Col xs="7">
+                    <Col md="7">
                         <h1>{formatCurrentDate}</h1>
                         <h1>{city} </h1>
                         <h2>{tempCur}°C</h2>
                         <CardText className="tempText">Min: {tempMin}°C / Max: {tempMax}°C</CardText>
                     </Col>
-                    <Col xs="5">
-                        <CardImg className="weatherIcon txt-right" src={`https://openweathermap.org/img/wn/${weatherIcon}@2x.png`} alt={weatherMain} />
+                    <Col md="5">
+                        <CardImg className="weatherIcon txt-right" src={`${apiConfig.openWeather.API_ICON_URL}${weatherIcon}@2x.png`} alt={weatherMain} />
                         
                         <h4>{weatherMain}</h4>
                         <CardText className="weatherDesc">{weatherDesc}</CardText>

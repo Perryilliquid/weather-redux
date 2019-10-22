@@ -21,7 +21,6 @@ export default function reducer(state = initialState, action = {}) {
         case FETCH_CURRENT_FORECAST: {
             return {
                 ...state,
-                currentCityId: action.currentCityId,
                 currentForeCastData: action.currentForeCastData
             };
         }

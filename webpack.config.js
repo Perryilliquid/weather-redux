@@ -27,7 +27,7 @@ module.exports = {
             {
               loader: 'file-loader',
               options: {
-                  name: 'css/[name].css'
+                  name: 'static/css/[name].css'
               }
             },
             {

@@ -28,7 +28,6 @@ export function fetchCurrentForecast(city) {
             if (response.data){
                 dispatch({
                     type: FETCH_CURRENT_FORECAST,
-                    currentCityId: response.data.id,
                     currentForeCastData: response.data
                 });
     

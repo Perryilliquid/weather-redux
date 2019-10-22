@@ -16,7 +16,7 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 ## Project Description
-It is a simple Weather App which is using OpenWeather API and using React + Redux + SASS + WEBPACK. 
+It is a Weather App which is using OpenWeather API and using React + Redux + SASS + WEBPACK. 
 - Users can type the city/town in the search bar (default is Hong Kong), it will return the current weather and coming 5 days forecast. 
 - Users can select the days with "Show Details" button and it will return the current day forecast by 3 hours.
 - It support on Desktop / Tablet / Mobile.

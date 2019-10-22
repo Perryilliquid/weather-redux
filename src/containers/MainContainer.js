@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { fetchCurrentForecast, fetchFiveDaysForecast } from '../redux/actions/storeActions';
 import LoadingContainer from '../components/loading/LoadingContainer';
 import CurrentForecast from '../components/CurrentForecast';
-import FiveDaysForecastContainer from './ForecastContainer';
+import ForecastContainer from './ForecastContainer';
 
 export class MainContainer extends Component {
     static propTypes = {
@@ -14,34 +14,28 @@ export class MainContainer extends Component {
     };
 
     state = {
-        showModal: false,
         city: 'Hong Kong',
-        currentCityId: 1819729, //Hong Kong Id
     }
 
     componentDidMount() {
         this.props.fetchCurrentForecast(this.state.city);
-        this.props.fetchFiveDaysForecast(this.state.currentCityId);
+        this.props.fetchFiveDaysForecast(this.state.city);
     }
 
-    searchCity = () =>{
-        console.log(this.state.city);
+    searchCity = () =>{      
         this.props.fetchCurrentForecast(this.state.city);
+        this.props.fetchFiveDaysForecast(this.state.city);
     }
 
     changeHandler = (e) =>{
-        //get the value from the input
-        let city = e.target.value;
-    //store the value in the state property
+        let city = e.target.value;  //get the value from the input
         this.setState({
-        city
+            city
         });
-        
     }
 
     render() {
-        const { ajaxStatus, profile, currentCityId, currentForeCastData, fiveDaysForecastData } = this.props;
-        console.log("temp: " + fiveDaysForecastData);
+        const { ajaxStatus, currentForeCastData, fiveDaysForeCastData } = this.props;
 
         return (
             <div className="container">
@@ -67,9 +61,9 @@ export class MainContainer extends Component {
                             weatherIcon={currentForeCastData.weather[0].icon}
                             weatherDesc={currentForeCastData.weather[0].description}
                         />
-                        {/* {!fiveDaysForecastData.isEmpty && <FiveDaysForecastContainer 
-                            fiveDaysForecastData={fiveDaysForecastData}
-                        />} */}
+                        <ForecastContainer
+                            fiveDaysForeCastData={fiveDaysForeCastData}
+                        />
                     </div>
                 </LoadingContainer>
             </div>
@@ -79,11 +73,13 @@ export class MainContainer extends Component {
 
 const mapStateToProps = state => {
 
+    console.log(state);
+
     return {
         ajaxStatus: state.ajaxStatus,
-        currentCityId: state.store.currentCityId,
         currentForeCastData: state.store.currentForeCastData,
-        fiveDaysForecastData: state.store.fiveDaysForecastData
+        fiveDaysForeCastData: state.store.fiveDaysForeCastData,
+        byThreeHoursForecastData: state.store.byThreeHoursForecastData
     };
 };
 

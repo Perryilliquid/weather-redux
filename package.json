@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "watch": "webpack",
+    "watch": "webpack --config webpack.config.js --watch",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

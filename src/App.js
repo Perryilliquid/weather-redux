@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { history } from './redux/createStore';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './sass/weather.scss';
 

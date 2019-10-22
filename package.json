@@ -46,8 +46,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "watch": "webpack --config webpack.config.js --watch",
+    "build": "react-scripts build",
     "dev": "nodemon --inspect dist/main-bundle.js",
-    "build": "webpack --mode=production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/*.js"

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Table } from 'reactstrap';
+import { fetchByThreeHoursForeCast } from '../redux/actions/storeActions';
 
 import Forecast from '../components/Forecast';  //Show Forecast Preview by 5 days
 import ForecastDetails from '../components/ForecastDetails';    //Show Details by 3 hours
@@ -9,46 +9,34 @@ class ForecastContainer extends Component {
     constructor (props){
         super(props);
         this.state = {
-            isOpenModal: false,
             threeHoursData: {}
         }
     }
 
     static propTypes = {
-        fiveDaysForecast: PropTypes.object.isRequired,
+        fiveDaysForeCastData: PropTypes.object.isRequired,
     };
 
     showThreeHours = (selectedDate) => {
-
-        // console.log(this.state.isOpenModal);
-
-        this.setState({
-            isOpenModal: !this.state.isOpenModal
-        });
-
-        const threeHoursData = this.props.fiveDaysForecast.fiveDaysForecast.list.filter(F => F.dt_txt.includes(selectedDate));
-        this.setState({
+        let threeHoursData = this.props.fiveDaysForeCastData.list.filter(F => F.dt_txt.includes(selectedDate));
+        this.setState = ({
             threeHoursData
-        });
-        // console.log(threeHoursData);
-    }
-
-    closeThreeHours = () => {
-        this.setState({
-            isOpenModal: !this.state.isOpenModal
-        });
+        })
     }
 
     render() {
-
-        const fiveDaysForecastData = this.props.fiveDaysForecast.fiveDaysForecast.list.filter(F => F.dt_txt.includes('00:00:00'));
-        const {isOpenModal, threeHoursData} = this.state;
+        const { fiveDaysForeCastData} = this.props;
+        const { threeHoursData} =  this.state;
+        let fiveDaysData = fiveDaysForeCastData.list.filter(F => F.dt_txt.includes('00:00:00'));
+        
+        console.log("state: " + threeHoursData);
 
         return (
             <React.Fragment>
+                <h2>Coming Five Days</h2>
                 <div className="forecastContainer">
                     {
-                        Object.values(fiveDaysForecastData).map((item, index) =>{
+                        Object.values(fiveDaysData).map((item, index) =>{
                             return(
                                 <Forecast
                                     key={index}

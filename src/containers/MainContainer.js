@@ -30,7 +30,7 @@ export class MainContainer extends Component {
         // console.log(this.state.city);
         this.props.fetchCurrentForecast(this.state.city);
         this.props.fetchFiveDaysForecast(this.state.city);
-        this.setState=({
+        this.setState({
             city: ''
         })
     }

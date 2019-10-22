@@ -15,9 +15,13 @@ const ForecastDetails = props => {
                     <Row>
                         <Col md="7">
                             <h5 className="weatherDate">{formatDate}</h5>
-                            <CardImg src={`${apiConfig.openWeather.API_ICON_URL}${weatherIcon}@2x.png`} alt={weatherMain} /> 
-                            <h2>{tempCur}°C</h2>
-                            <CardText>{tempMin}°C / <b>{tempMax}°C</b></CardText>
+                            <Row>
+                                <Col>
+                                    <h2>{tempCur}°C</h2>
+                                    <CardText>{tempMin}°C / <b>{tempMax}°C</b></CardText>
+                                </Col>
+                                <Col xs="5"><CardImg src={`${apiConfig.openWeather.API_ICON_URL}${weatherIcon}@2x.png`} alt={weatherMain} /></Col>
+                            </Row>
                         </Col>
                         <Col md="5">
                             <h4>{weatherMain}</h4>

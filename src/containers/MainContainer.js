@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Alert } from 'reactstrap';
 
 import { fetchCurrentForecast, fetchFiveDaysForecast } from '../redux/actions/storeActions';
 
@@ -60,6 +61,9 @@ export class MainContainer extends Component {
                         searchCityKeyPress={this.searchCityKeyPress}
                         city={city}
                     />
+                    {ajaxStatus.isServerError === true && <Alert color="danger">
+                        {ajaxStatus.serverMessage}
+                    </Alert>}
                     <div className="dashboard">
                         <CurrentForecast
                             key={currentForeCastData.id}

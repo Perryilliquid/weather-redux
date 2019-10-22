@@ -88,6 +88,19 @@ h1.header{
   }
 }
 
+.alert-danger{
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 15px;
+
+  text-transform: capitalize;
+
+  @media screen and (max-width: $mobile-v) {
+    width: 100%;
+  }
+}
+
 .dashboard{
   max-width: 1000px;
   margin: 0 auto;
@@ -175,23 +188,27 @@ h1.header{
       @media screen and (max-width: $tablet-v) {
         width: calc(100% / 3.5);
         flex: 0 0 calc(100% / 3.5);
-        margin-right: 3%;
 
         &:nth-child(5){
           width: calc(100% / 3.5);
           flex: 0 0 calc(100% / 3.5);
-          margin-right: 3%;
         }
       }
 
       @media screen and (max-width: $mobile-v) {
         width: calc(100% / 1.5);
         flex: 0 0 calc(100% / 1.5);
+        margin-right: 3%;
 
         &:nth-child(5){
           width: calc(100% / 1.5);
           flex: 0 0 calc(100% / 1.5);
+          margin-right: 3%;
         }
+      }
+
+      h4{
+        font-size: 1.7rem;
       }
 
       .weatherDesc{
@@ -200,6 +217,10 @@ h1.header{
 
       .tempText{
         font-size: 1rem;
+      }
+
+      .card-body{
+        padding: 20px;
       }
 
       .card-img{
@@ -238,7 +259,7 @@ h1.header{
       }
 
       img{
-        max-width: 50px;
+        max-width: 80px;
       }
 
       .col-md-7{

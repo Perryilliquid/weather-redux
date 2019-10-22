@@ -14,7 +14,7 @@ const Forecast = props => {
       <React.Fragment>
             <Card className={`forecast ${weatherIcon}`}>
                 <CardBody className="">
-                    <h5 className="weatherDate">{formatDate}</h5>
+                    <h4 className="weatherDate">{formatDate}</h4>
                     <CardImg src={`${apiConfig.openWeather.API_ICON_URL}${weatherIcon}@2x.png`} alt={weatherMain} /> 
                     <h2>{tempCur}°C</h2>
                     <CardText className="tempText">{tempMin}°C / <b>{tempMax}°C</b></CardText>

@@ -2,15 +2,11 @@ import {
     FETCH_COMPLETE,
     FETCH_PENDING,
     SERVER_ERROR,
-    SUBMIT_COMPLETE,
-    SUBMIT_PENDING,
     RESET_STATUS
 } from '../reducers/ajaxStatusReducer';
 import {
-    PROFILE_FETCH_DETAILS,
     FETCH_CURRENT_FORECAST,
-    FETCH_FIVE_DAYS_FORECAST,
-    FETCH_BY_THREE_HOURS_FORECAST
+    FETCH_FIVE_DAYS_FORECAST
 } from '../reducers/storeReducer';
 import axios from 'axios';
 import apiConfig from './config';
@@ -41,6 +37,9 @@ export function fetchCurrentForecast(city) {
                 });
             }
         } catch (error) {
+
+            console.log("error: " + error);
+
             dispatch({
                 type: SERVER_ERROR,
                 serverStatus: error.response.status,

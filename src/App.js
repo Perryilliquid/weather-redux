@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-import { history } from './redux/createStore';
 import 'bootstrap/scss/bootstrap.scss';
 import './sass/weather.scss';
 
@@ -9,7 +7,7 @@ import Loadable from 'react-loadable';
 import LoadingSpinner from './components/loading/LoadingSpinner';
 
 const MainContainer = Loadable({
-    loader: () => import('./containers/MainContainer' /* webpackChunkName: "Home" */),
+    loader: () => import('./containers/MainContainer'),
     loading: LoadingSpinner
 });
 

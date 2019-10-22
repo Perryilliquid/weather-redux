@@ -6,7 +6,6 @@ export const FETCH_FIVE_DAYS_FORECAST = 'weather/fetchFiveDaysForecast';
 export const FETCH_BY_THREE_HOURS_FORECAST = 'weather/fetchByThreeHoursForecast';
 
 const initialState = {
-    currentCityId: 1819729,
     currentForeCastData: currentDummy,
     fiveDaysForeCastData: forecastDummy,
     byThreeHoursForecastData: {}
@@ -17,7 +16,6 @@ export default function reducer(state = initialState, action = {}) {
         case FETCH_CURRENT_FORECAST: {
             return {
                 ...state,
-                currentCityId: action.currentCityId,
                 currentForeCastData: action.currentForeCastData
             };
         }

@@ -31,6 +31,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-dropzone": "4.2",
+    "react-geosuggest": "^2.12.0",
     "react-loadable": "^5.5.0",
     "react-number-format": "^4.2.0",
     "react-redux": "5",
@@ -46,9 +47,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "watch": "webpack --config webpack.config.js --watch",
-    "build": "react-scripts build",
     "dev": "nodemon --inspect dist/main-bundle.js",
+    "watch": "webpack --mode=development",
+    "build": "webpack --mode=production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint src/*.js"

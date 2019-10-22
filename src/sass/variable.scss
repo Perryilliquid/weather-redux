@@ -1,7 +1,7 @@
 $bg-color: rgb(43,117,144);
 $bg-gradient: linear-gradient(36deg, rgba(43,117,144,1) 0%, rgba(0,212,255,1) 100%);
 $main-color: #fff;
-$second-color: #222;
+$second-color: #0b2027;
 $grey-color: #6c757d;
 $main-font: 'Helvetica Neue', 'Helvetica', 'Arial';
 $animation: slideDown 0.500s ease-in-out;
@@ -9,3 +9,32 @@ $transition: all 0.300s ease-in-out;
 $shadow: 0px 10px 24px -7px rgba(0,0,0,0.75);
 $text-shadow: rgba(0, 0, 0, 0.5) 0.05em 0.05em 0.1em;
 $text-shadow2: rgba(0, 0, 0, 0.2) 0.05em 0.05em 0.1em;
+
+//Media Query
+$highRes: 1920px;
+/*1920px - 1440px*/
+
+$desktop: 1440px;
+/*1440px - 1024px*/
+
+$desktop-s: 1199px;
+
+$tablet-h: 1025px;
+/* 1023px - 992px*/
+
+$tablet-v: 991px;
+/* 991px - 768px */
+
+$mobile-h-iphoneX: 812px;
+$mobile-iphone-ratio: 3;
+
+$mobile-h: 767px;
+/* 767px - 481px */
+
+$mobile-v: 550px;
+/* 480px - 320px */
+
+$mobile-s: 375px;
+
+$mobile-xs: 320px;
+/* 320px */

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { fetchCurrentForecast, fetchFiveDaysForecast } from '../redux/actions/storeActions';
+
 import LoadingContainer from '../components/loading/LoadingContainer';
+import LocationForm from '../components/LocationForm';
 import CurrentForecast from '../components/CurrentForecast';
 import ForecastContainer from './ForecastContainer';
 
@@ -14,20 +17,29 @@ export class MainContainer extends Component {
     };
 
     state = {
-        city: 'Hong Kong',
+        city: ''
     }
 
-    componentDidMount() {
+    componentDidMount() { //default load Hong Kong weather
+        this.props.fetchCurrentForecast('Hong Kong');
+        this.props.fetchFiveDaysForecast('Hong Kong');
+    }
+
+    searchCity = () => {
+        console.log(this.state.city);
         this.props.fetchCurrentForecast(this.state.city);
         this.props.fetchFiveDaysForecast(this.state.city);
     }
 
-    searchCity = () =>{      
-        this.props.fetchCurrentForecast(this.state.city);
-        this.props.fetchFiveDaysForecast(this.state.city);
+    seachCityKeyPress = (e) => {
+        if (e.keycode === 13){
+            this.props.fetchCurrentForecast(this.state.city);
+            this.props.fetchFiveDaysForecast(this.state.city);
+        }
     }
 
     changeHandler = (e) =>{
+        e.preventDefault();
         let city = e.target.value;  //get the value from the input
         this.setState({
             city
@@ -36,15 +48,18 @@ export class MainContainer extends Component {
 
     render() {
         const { ajaxStatus, currentForeCastData, fiveDaysForeCastData } = this.props;
+        const { city } = this.state;
 
         return (
             <div className="container">
                 <h1 className="header">Weather App </h1>
                 <LoadingContainer loading={ajaxStatus.isLoading}>
-                    <div className="locationForm">
-                        <input name="city" placeholder="Hong Kong" onChange={this.changeHandler} />
-                        <button onClick={this.searchCity}> <i className="fas fa-search"></i> </button>
-                    </div>
+                    <LocationForm
+                        changeHandler={this.changeHandler}
+                        searchCity={this.searchCity}
+                        searchCityKeyPress={this.searchCityKeyPress}
+                        city={city}
+                    />
                     <div className="dashboard">
                         <CurrentForecast
                             key={currentForeCastData.id}
@@ -78,8 +93,7 @@ const mapStateToProps = state => {
     return {
         ajaxStatus: state.ajaxStatus,
         currentForeCastData: state.store.currentForeCastData,
-        fiveDaysForeCastData: state.store.fiveDaysForeCastData,
-        byThreeHoursForecastData: state.store.byThreeHoursForecastData
+        fiveDaysForeCastData: state.store.fiveDaysForeCastData
     };
 };
 

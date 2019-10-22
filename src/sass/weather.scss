@@ -3,7 +3,6 @@
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	
 	box-sizing: border-box; 
 }
 
@@ -19,6 +18,7 @@ body {
   h1, h2{
     line-height: 2;
     margin: 0;
+    text-shadow: $text-shadow;
   }
 
   p{
@@ -27,12 +27,17 @@ body {
   }
 }
 
+.container{
+  @media screen and (max-width: $mobile-h) {
+    max-width: none;
+  }
+}
+
 h1.header{
   margin: 30px 0;
   text-transform: capitalize;
   font-size: 2.5rem;
   color: $main-color;
-  text-shadow: $text-shadow;
 
   text-align: center;
   animation: $animation;
@@ -46,8 +51,12 @@ h1.header{
   grid-template-columns: 6fr 1fr;
   border-radius: 10px;
 
+  @media screen and (max-width: $mobile-v) {
+    width: 100%;
+  }
+
   *{
-    font-size: 1rem;
+    font-size: 1.2rem;
     border: none;
   }
 
@@ -57,8 +66,8 @@ h1.header{
   }
 
   button {
-    background: $grey-color;
-    border-color: $grey-color;
+    background: $second-color;
+    border-color: $second-color;
     color: $main-color;
     padding: 10px;
     transition: $transition;
@@ -68,6 +77,13 @@ h1.header{
     &:hover{
       background: $second-color;
       border-color: $second-color;
+    }
+
+    &:disabled{
+      background: $grey-color;
+      border-color: $grey-color;
+      color: #bbb;
+      text-shadow: $text-shadow;
     }
   }
 }
@@ -87,12 +103,16 @@ h1.header{
   .currentForeCastContainer{
     margin: 50px auto;
     margin-bottom: 20px;
-    max-width: 900px;
+    max-width: 1000px;
     position: relative;
     background: $second-color;
     background-size: cover;
     background-position: center;
     color: $main-color;
+
+    @media screen and (max-width: $mobile-v) {
+      margin-top: 20px;
+    }
 
     .card-body{
       padding: 20px;
@@ -127,6 +147,15 @@ h1.header{
     display: flex;
     flex-wrap: wrap;
 
+    @media screen and (max-width: $tablet-v) {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    @media screen and (max-width: $mobile-v) {
+      margin-bottom: 20px;
+    }
+
     .forecast{
       flex: 0 0 19%;
       margin-right: 1%;
@@ -137,6 +166,33 @@ h1.header{
       -webkit-box-shadow: $shadow;
       -moz-box-shadow: $shadow;
       box-shadow: $shadow;
+
+      &:nth-child(5){
+        flex: 0 0 20%;
+        margin-right: 0;
+      }
+
+      @media screen and (max-width: $tablet-v) {
+        width: calc(100% / 3.5);
+        flex: 0 0 calc(100% / 3.5);
+        margin-right: 3%;
+
+        &:nth-child(5){
+          width: calc(100% / 3.5);
+          flex: 0 0 calc(100% / 3.5);
+          margin-right: 3%;
+        }
+      }
+
+      @media screen and (max-width: $mobile-v) {
+        width: calc(100% / 1.5);
+        flex: 0 0 calc(100% / 1.5);
+
+        &:nth-child(5){
+          width: calc(100% / 1.5);
+          flex: 0 0 calc(100% / 1.5);
+        }
+      }
 
       .weatherDesc{
         text-transform: capitalize;
@@ -154,13 +210,12 @@ h1.header{
       .btn{
         margin-top: 20px;
       }
-
-
     }
   }
 
   .foreCastDetailsContainer{
     width: 100%;
+    margin-top: 20px;
 
     .row{
       align-items: center;
@@ -178,8 +233,18 @@ h1.header{
     
       animation: $animation;
 
+      h2{
+        line-height: 1.2;
+      }
+
       img{
-        width: auto;
+        max-width: 50px;
+      }
+
+      .col-md-7{
+        @media screen and (max-width: $mobile-v) {
+          margin-bottom: 10px;
+        }
       }
     }
   }

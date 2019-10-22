@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { history } from './redux/createStore';
 import 'bootstrap/dist/css/bootstrap.css';
-import './sass/weather.css';
+import './sass/weather.scss';
 import Loadable from 'react-loadable';
 import LoadingSpinner from './components/loading/LoadingSpinner';
 import { Route } from 'react-router-dom';
